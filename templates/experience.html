@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+{% block maincontent %}
+<div class="container mt-5">
+    <h1 class="mb-4">Work Experience</h1>
+
+    <!-- Display experiences and associated responsibilities -->
+    {% for experience in experiences %}
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+            <h5 class="card-title mb-0">{{ experience.job_title }}</h5>
+        </div>
+        <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-muted" style="float:left">{{ experience.company_name }}</h6>
+            <img style="float: right;width:10%;height:10%;border-radius:5px" src="{{ experience.image.url }}"/>
+            <br>
+            <p class="card-text">{{ experience.description }}</p>
+            <h6>Responsibilities:</h6>
+            <ul class="list-group">
+                {% for responsibility in experience.responsibility_set.all %}
+                <li class="list-group-item">{{ responsibility.responsibility_text }}</li>
+                {% empty %}
+                <li class="list-group-item">No responsibilities listed</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">Duration: {{ experience.start_date }} -
+                {% if experience.end_date %}
+                {{ experience.end_date }}
+                {% else %}
+                Present
+                {% endif %}</small>
+        </div>
+    </div>
+    {% empty %}
+    <p>No work experiences available</p>
+    {% endfor %}
+</div>
+
+{% endblock %}

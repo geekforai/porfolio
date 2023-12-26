@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+{% block maincontent %}
+<div class="container mt-4">
+    <h2 style="text-align:center;color:darkgreen;font-family:'Times New Roman', Times, serif">{{ project.project_title }}</h2>
+    <img src="{{ project.project_image.url }}" alt="{{ project.project_title }}" class="img-fluid">
+    <h3 style="text-align:center">Project Objective</h3>
+    <p>{{ project.project_objective }}</p>
+    <h3>Project Description</h3>
+    <p>{{ project.project_desc }}</p>
+    <h3>Used Technology</h3>
+    <p>{{ project.project_tech_used }}</p>
+</div>
+{% endblock %}

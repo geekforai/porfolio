@@ -1,0 +1,76 @@
+{% extends 'layout.html' %}
+{% block maincontent %}
+
+<div class="container mt-4">
+    {% for blog in blogs %}
+    <div class="card mb-4">
+        <img src="{{ blog.blog_image.url }}" class="card-img-top" alt="{{ blog.blog_title }}">
+        <div class="card-body">
+            <h2 class="card-title" style="text-align:center">{{ blog.blog_title }}</h2>
+            <p class="card-text">{{ blog.blog_Desc }}</p>
+            <p class="text-muted">Published on: {{ blog.publish_date }}</p>
+            <p class="text-muted">Likes: {{ blog.like_count }}</p>
+
+            <!-- Like button -->
+            <form action="{% url 'like_blog' blog.id  %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">Like</button>
+            </form>
+            <br>
+            <!-- Comment form -->
+            <form action="{% url 'add_comment' blog.id %}" method="POST">
+                {% csrf_token %}
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Add a comment..." name="blog_comment">
+                    <button class="btn btn-outline-secondary" type="submit">Comment</button>
+                </div>
+            </form>
+
+            <!-- Display comments -->
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title" style="float: left;">Comments {{ blog.comment_set.all.count }}</h6>
+                    
+                    <button class="btn btn-primary" style="float: right;" onclick="showhidecomments('{{blog.id}}')" id="toggleButton{{blog.id}}">Show comments</button>
+                    
+                    <BR><div style="display: none;" id="comments{{blog.id}}">
+                        <div class="container mt-4">
+                            <!-- Display comments -->
+                            {% for comment in blog.comment_set.all|slice:":5" %}
+                                <div class="mb-3">
+                                    <p class="card-text">{{ comment.blog_comment }}</p>
+                                    <small class="text-muted">{{ comment.created_at }}</small>
+                                </div>
+                            {% empty %}
+                                <p>No comments yet.</p>
+                            {% endfor %}
+                    
+                            <!-- Pagination -->
+                            {% if blog.comment_set.count > 5 %}
+                              <a href="{% url 'show_all_comments' blog.id %}"><button class="btn btn-success">Show all comments</button></a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<script>
+    function showhidecomments(num){
+        var button =document.getElementById('toggleButton'+num)
+        var commentsDiv =document.getElementById('comments{{blog.id}}'+num)
+        if(commentsDiv.style.display=='block')
+        {
+            commentsDiv.style.display='none'
+            button.innerHTML='Show comments'
+        }
+        else{
+            commentsDiv.style.display='block'
+            button.innerHTML='Hide comments'
+        }
+    
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+{% block maincontent %}
+    {% for comment in blog.comment_set.all %}
+          <p style="float: left;">{{comment.blog_comment}}</p>
+          <h4 style="float: right;">{{comment.created_at}}</h4>
+          <br>
+          <hr>
+          <br>
+    {% endfor %}
+{% endblock %}

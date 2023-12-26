@@ -1,0 +1,93 @@
+{% extends 'layout.html' %}
+{% block maincontent %}
+<style>
+    /* Optional: Add some styles for better visibility */
+    .box {
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        height: 100%;
+        /* Added height to align content vertically */
+        display: flex;
+        /* Added to use flexbox */
+        flex-direction: column;
+        /* Column direction for flexbox */
+        justify-content: center;
+        /* Center content vertically */
+    }
+
+    .content {
+        text-align: center;
+        /* Center text horizontally */
+    }
+    .text-container {
+        display: flex;
+        gap: 20px;
+      }
+  
+      .text-item {
+        font-family: cursive;
+        font-size: 2em;
+        text-align: center;
+        overflow: hidden;
+        border-right: 2px solid transparent;
+        white-space: nowrap;
+        animation: typing 6s steps(40) forwards;
+      }
+      .text-item:hover {
+        transform: scale(1.1);
+        color: #e30c0c; /* Change color on hover */
+      }
+      @media screen and (max-width: 768px) {
+        .text-item {
+          font-size: 1.5em; /* Change font size for small screens */
+        }
+      }
+  
+      /* Define typing animation */
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
+</style>
+<div class="container">
+    <div class="row">
+        <!-- Column for large screens (lg) and extra-large screens (xl) -->
+        <div class="col-lg-6 col-xl-6" style="margin-bottom: 50px;">
+            <div class=" box d-flex justify-content-center align-items-center">
+                <img src='static/img/profile.png' style="width:50%;">
+            </div>
+            <div class="text-container text-item">
+                <div  style="float: left; ;color:rgb(56, 31, 214)">ML Engineer </div>
+                    <div style="float: left;"> & </div>
+                    <div style="color: rgb(255, 94, 0);">Data Scientist</div>
+            </div>
+        </div>
+        <!-- Column for small, medium, and extra-small screens -->
+        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+            <div class="box">
+                <!-- Content for the second column -->
+                <b><h2>Professional Profile:</h2></b>
+                <p>I am a dedicated and experienced professional specializing in Machine Learning (ML) and Data Science. With a proven track record in delivering impactful solutions, I possess a comprehensive understanding of the intricacies of data and its application in solving complex problems.</p>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <!-- Column for large screens (lg) and extra-large screens (xl) -->
+        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6" >
+            <h2 style="text-align: center;">Professional Interests</h2>
+            <p>As a seasoned professional in Machine Learning (ML), Data Science, and Data Structures & Algorithms (DSA), my passion lies in leveraging data-driven methodologies to solve complex problems and derive actionable insights. With a robust background in ML algorithms, statistical modeling, and predictive analytics, I thrive in developing innovative solutions that drive impactful outcomes.</p>
+        </div>
+        <!-- Column for small, medium, and extra-small screens -->
+        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+           <h2 style="text-align: center;">Personal Interests</h2>
+           <p>Beyond my professional pursuits, I am deeply passionate about solving Rubik's Cube puzzles. This interest stems from my fascination with problem-solving and algorithmic thinking. Solving these puzzles not only serves as a recreational activity but also enhances my cognitive abilities and logical reasoning.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

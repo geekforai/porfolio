@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body style="font-family: cursive;">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/"><img style="width:200px;"
+        src="/static/img/logo-color.png" /></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" onclick="navbarshow()"
+      data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/projects">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/experiences">Experience</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/blogs">Blogs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/media/Amit_kumar_resume.docx">Download Resume</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  {% block maincontent %}
+
+  {% endblock %}
+  <footer class="footer" style="margin-top: 100px;">
+    <div class="social-icons">
+      <a href="/"><i class="fab fa-linkedin"></i></a>
+      <a href="/"><i class="fab fa-github"></i></a>
+      <a href="https://api.whatsapp.com/send?phone=+919720518149"><i class="fab fa-whatsapp"></i></a>
+    </div>
+
+  </footer>
+  <script src='/static/js/script.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+  <script src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
